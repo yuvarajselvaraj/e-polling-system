@@ -105,25 +105,13 @@
 	<div>
 	
 	</div>
-	<!-- //content -->
-
-	<!-- copyright -->
 	<div class="footer-w3ls">
-		<h2>&copy; 2018 E-Polling system. All rights reserved 
+		<h2>&copy; 2020 E-Polling system. All rights reserved 
 		</h2>
 	</div>
-	<!-- //copyright -->
-
-
-	<!-- js files -->
-	<!-- Jquery -->
+	
 	<script src="/polling/resources/js/jquery-2.2.3.min.js"></script>
-	<!-- //Jquery -->
-	<!-- input fields js -->
 	<script src="/polling/resources/js/input-field.js"></script>
-	<!-- //input fields js -->
-
-	<!-- password-script -->
 	<script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
@@ -140,8 +128,21 @@
 			//empty string means no validation error
 		}
 	</script>
-	<!-- //password-script -->
-	<!-- //js files -->
+	<script> 
+    window.intergramId = "866395637";
+    window.intergramCustomizations = {
+        titleClosed: 'Closed chat title',
+        titleOpen: 'Opened chat title',
+        introMessage: 'First message when the user opens the chat for the first time',
+        autoResponse: 'A message that is sent immediately after the user sends its first message',
+        autoNoResponse: 'A message that is sent one minute after the user sends its first message ' +
+                        'and no response was received',
+        mainColor: "#E91E63", // Can be any css supported color 'red', 'rgb(255,87,34)', etc
+        alwaysUseFloatingButton: false // Use the mobile floating button also on large screens
+    };
+</script>
+<script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
+
 </body>
 
 </html>

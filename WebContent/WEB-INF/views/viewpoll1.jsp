@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Online Voting</title>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/polling/resources/css/style2.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/polling/resources/css/coin-slider.css" />
@@ -14,8 +15,11 @@
 <script type="text/javascript" src="/polling/resources/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/polling/resources/js/script.js"></script>
 <script type="text/javascript" src="/polling/resources/js/coin-slider.min.js"></script>
+
 </head>
 <body>
+
+
 <div class="main">
   <div class="header">
     <div class="header_resize">
@@ -62,11 +66,11 @@
                           
 
                         %>
-                       <form name="f" action="viewpoll2" method="post" >  <center>
+                       <form name="f"  method="post" action="viewpoll2" >  <center>
 <table>
 <tr>
               <td>
-               <strong><font size="4" color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question Id: </font></strong>
+               <strong><font size="4" color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roll No: </font></strong>
                 <input type="text" name="rollno" value="<%=uid%>" style="height:30px; width:170px" readonly></input>
               </td>
         </tr>   

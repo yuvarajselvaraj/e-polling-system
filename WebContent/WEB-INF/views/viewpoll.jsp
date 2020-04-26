@@ -10,16 +10,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/polling/resources/css/style2.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/polling/resources/css/coin-slider.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
 <script type="text/javascript" src="/polling/resources/js/cufon-yui.js"></script>
 <script type="text/javascript" src="/polling/resources/js/cufon-times.js"></script>
 <script type="text/javascript" src="/polling/resources/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/polling/resources/js/script.js"></script>
 <script type="text/javascript" src="/polling/resources/js/coin-slider.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <%
             if (request.getParameter("msg") != null) {%>
-        <script>alert('Your Vote is Submitted Successfully');</script>
+        <div class="container">
+  <h2>Alerts</h2>
+  <div class="alert alert-success">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+</div>
+        
         <%}
             if (request.getParameter("msg11") != null) {%>
         <script>alert('username/password wrong');</script> 
