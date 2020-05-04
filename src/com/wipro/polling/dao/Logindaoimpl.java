@@ -18,6 +18,7 @@ public class Logindaoimpl implements Logindao {
 	private SessionFactory sessionFactory;
 	
 	@Autowired
+	public static
 	HttpSession session;
 	
 	@Transactional

@@ -1,13 +1,21 @@
 package com.wipro.polling.controller;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.wipro.polling.mail.Mail;
+import com.wipro.polling.Dbconnection.Dbconnection;
+import com.wipro.polling.dao.Logindaoimpl;
 import com.wipro.polling.model.Adminlogin;
 import com.wipro.polling.model.Login;
 import com.wipro.polling.model.Question;
@@ -22,7 +30,6 @@ public class Pollingcontroller {
 	
 	@Autowired
     private Questionservice questionservice;  
-    
 @RequestMapping(value="student")
 public String dostart()
 {
@@ -83,15 +90,35 @@ public String doviewpoll1()
 @RequestMapping(value="viewpoll2")
 public String doviewpoll2(Model model,@ModelAttribute("answerbean") userpoll answerbean)
 {
-	if (answerbean!=null)
+	Connection con=Dbconnection.getConnection();
+	int count=0;
+	try {
+		Statement st = con.createStatement();
+		String sql="select count(*) from user1234 where qid="+answerbean.getId()+" and rollno='"+answerbean.getRollno()+"'";
+		ResultSet rs=st.executeQuery(sql);
+		rs.next();
+		count=rs.getInt(1);
+		con.close();
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+		model.addAttribute("msg","VOTING FAILED DUE TO SOME REASONS");
+		return "userhome";
+	}
+	if (answerbean!=null && count==0)
 	{
-		model.addAttribute("msg","you voted successfully");
+		model.addAttribute("msg","VOTE HAS BEEN SUBMITTED SUCCESSFULLY");
 		return questionservice.doans(answerbean);
+	}
+	else if(answerbean!=null && count!=0)
+	{
+		model.addAttribute("error","YOU HAVE ALREADY VOTED");
+		return "userhome";
 	}
 	else
 	{
-		model.addAttribute("msg","failed");
-		return "viewpoll";
+		model.addAttribute("msg","VOTING FAILED DUE TO SOME REASONS");
+		return "userhome";
 	}
 }
 @RequestMapping(value="forgetmail")

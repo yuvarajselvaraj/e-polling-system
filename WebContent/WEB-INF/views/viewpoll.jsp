@@ -72,11 +72,11 @@
             ResultSet rs,rs1;
             con = Dbconnection.getConnection();
             st = con.createStatement();
+            Statement st1=con.createStatement();
             DatabaseMetaData dbm = con.getMetaData();
          // check if "employee" table is there
             rs = st.executeQuery("select * from questions");
-           
-                                                      
+                     
             %>
      
          <table style="width:70%" border="2" >
@@ -84,17 +84,22 @@
                <h2 style="color: black">Uploaded File Details</h2><br><hr>
 
 <tr>
-      <th><font color="green">Id</th>
-     <th><font color="green">______Question______</th>
-     <th><font color="green"> Option_A</th>
-     <th><font color="green"> Option_B</th>
-     <th><font color="green"> Option_C</th>  
-     <th><font color="green"> Option_D</th>  
-     <th><font color="red"> Vote</th>
+      <th><font color="green"></font>Id</th>
+     <th><font color="green"></font>______Question______</th>
+     <th><font color="green"></font> Option_A</th>
+     <th><font color="green"> </font>Option_B</th>
+     <th><font color="green"> </font>Option_C</th>  
+     <th><font color="green"></font> Option_D</th>  
+     <th><font color="red"></font> Vote</th>
+     <th><font color="green"></font>status</th>
      
 </tr>
     <%
 while(rs.next()){
+	ResultSet res1;
+	res1=st1.executeQuery("select count(*) from user1234 where qid="+rs.getString(1)+" and rollno='"+session.getAttribute("uid")+"'");     
+	res1.next();
+	System.out.print(request.getParameter("uid"));
 %>
 <tr>
     <th style="color: black"><%=rs.getString(1)%></th>
@@ -104,8 +109,10 @@ while(rs.next()){
     <th style="color: black"><%=rs.getString(4)%></th>
     <th style="color: black"><%=rs.getString(5)%></th>
      <td><a href="viewpoll1?id=<%=rs.getInt("Id")%>&que=<%=rs.getString("question")%>&a=<%=rs.getString("option1")%>&b=<%=rs.getString("option2")%>&c=<%=rs.getString("option3")%>&d=<%=rs.getString("option4")%>">Vote</a> </td>   
+    <th style="color: black"><%=res1.getInt(1)%></th> 
  </tr></hr> 
-       <%}%>                 
+       <%}
+       rs.close();%>                 
             
              </table>
                     </center>
