@@ -20,21 +20,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%
-            if (request.getParameter("msg") != null) {%>
-        <div class="container">
-  <h2>Alerts</h2>
-  <div class="alert alert-success">
-    <strong>Success!</strong> This alert box could indicate a successful or positive action.
-  </div>
-</div>
-        
-        <%}
-            if (request.getParameter("msg11") != null) {%>
-        <script>alert('username/password wrong');</script> 
-        
-        <%}
-        %> 
 <div class="main">
   <div class="header">
     <div class="header_resize">
@@ -78,7 +63,6 @@
             rs = st.executeQuery("select * from questions");
                      
             %>
-     
          <table style="width:70%" border="2" >
 
                <h2 style="color: black">Uploaded File Details</h2><br><hr>
@@ -90,31 +74,42 @@
      <th><font color="green"> </font>Option_B</th>
      <th><font color="green"> </font>Option_C</th>  
      <th><font color="green"></font> Option_D</th>  
-     <th><font color="red"></font> Vote</th>
-     <th><font color="green"></font>status</th>
-     
+     <th><font color="green" align-content="center"></font> Vote</th>     
 </tr>
+<tr>
     <%
 while(rs.next()){
-	ResultSet res1;
-	res1=st1.executeQuery("select count(*) from user1234 where qid="+rs.getString(1)+" and rollno='"+session.getAttribute("uid")+"'");     
-	res1.next();
-	System.out.print(request.getParameter("uid"));
+	
+	
 %>
-<tr>
-    <th style="color: black"><%=rs.getString(1)%></th>
+<%
+	ResultSet res1;
+	res1=st1.executeQuery("select count(*) from answer where qid="+rs.getString(1)+" and rollno='"+session.getAttribute("uid")+"'");     
+	res1.next();%>
+	<th style="color: black"><%=rs.getString(1)%></th>
     <th style="color: black"><%=rs.getString(6)%></th>
     <th style="color: black"><%=rs.getString(2)%></th>
     <th style="color: black"><%=rs.getString(3)%></th>
     <th style="color: black"><%=rs.getString(4)%></th>
     <th style="color: black"><%=rs.getString(5)%></th>
-     <td><a href="viewpoll1?id=<%=rs.getInt("Id")%>&que=<%=rs.getString("question")%>&a=<%=rs.getString("option1")%>&b=<%=rs.getString("option2")%>&c=<%=rs.getString("option3")%>&d=<%=rs.getString("option4")%>">Vote</a> </td>   
-    <th style="color: black"><%=res1.getInt(1)%></th> 
- </tr></hr> 
-       <%}
-       rs.close();%>                 
+	<% if(res1.getInt(1)==0)
+	{%>
+     <td ><button  id="vote" class="btn btn-outline-success"
+     onclick="window.location.href='viewpoll1?id=<%=rs.getInt("Id")%>&que=<%=rs.getString("question")%>&a=<%=rs.getString("option1")%>&b=<%=rs.getString("option2")%>&c=<%=rs.getString("option3")%>&d=<%=rs.getString("option4")%>';" >Vote</button> </td>   
+
+	<%}
+	else{%>
+     <td ><button  id="vote" class="btn btn-link"
+     onclick="window.location.href='javascript:void(0)9';" disabled>Vote</button> </td>   
+     
+	<%}
+	%>
+</tr>
+</hr> 
+       <%}%>                 
             
              </table>
+             
                     </center>
      
                

@@ -68,12 +68,12 @@ javafx.scene.chart.*,javafx.scene.Group" %>
            
           
         
-            rs = st.executeQuery("select * from user1234 where qid="+qid+"");
+            rs = st.executeQuery("select * from answer where qid="+qid+"");
             st1 = con.createStatement();
    
          for( int i=0;i<4;i++) 
          {
-             rs1 = st1.executeQuery("select * from user1234 where ans='"+var[i]+"' and qid="+qid+""); 
+             rs1 = st1.executeQuery("select * from answer where ans='"+var[i]+"' and qid="+qid+""); 
              while(rs1.next())
              {
                  increment++;
@@ -108,13 +108,13 @@ javafx.scene.chart.*,javafx.scene.Group" %>
             Statement st5;
             ResultSet rs5;
        st5 = con.createStatement();
-       rs5 = st5.executeQuery("select * from user1234 where qid="+qid+"");                
+       rs5 = st5.executeQuery("select * from questions,answer where qid="+qid+" and id="+qid);                
       if(rs5.next()){
-       question=rs5.getString("que");
-       opa=rs5.getString("a");  
-       opb=rs5.getString("b");
-       opc=rs5.getString("c");
-       opd=rs5.getString("d");
+       question=rs5.getString("question");
+       opa=rs5.getString("option1");  
+       opb=rs5.getString("option2");
+       opc=rs5.getString("option3");
+       opd=rs5.getString("option4");
      }                 
                        
 double Apercentage =0;

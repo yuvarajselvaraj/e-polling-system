@@ -54,8 +54,7 @@
              double totalrecords=0;
             double[] count= new double[4];
             double increment=0;
-             String[] var= new String[4];
-             var[0]="A";var[1]="B";var[2]="C";var[3]="D";
+             
             Connection con;
             Statement st;
             ResultSet rs;
@@ -64,25 +63,9 @@
            
             con = Dbconnection.getConnection();
             st = con.createStatement();
-            rs = st.executeQuery("select * from user1234");
-            st1 = con.createStatement();
+            rs = st.executeQuery("select * from questions,answer where questions.id=answer.qid");
    
-         for( int i=0;i<4;i++) 
-         {
-             rs1 = st1.executeQuery("select * from user1234 where ans='"+var[i]+"'"); 
-             while(rs1.next())
-             {
-                 increment++;
-             }
-             count[i] = increment;
-             increment=0;
-             System.out.println("xxi   yyycount[i]" +i +count[i]);         
-         }
-         
-         
-     
-    
-            
+           
             
        %>
      
@@ -109,44 +92,21 @@ while(rs.next()){
    
 %>
 <tr>
-    <th style="color: black"><%=rs.getString(7)%></th>
-    <th style="color: black"><%=rs.getString(8)%></th>
+    <th style="color: black"><%=rs.getString(1)%></th>
+    <th style="color: black"><%=rs.getString(6)%></th>
     <th style="color: black"><%=rs.getString(2)%></th>
+    <th style="color: black"><%=rs.getString(3)%></th>
     <th style="color: black"><%=rs.getString(4)%></th>
     <th style="color: black"><%=rs.getString(5)%></th>
-    <th style="color: black"><%=rs.getString(6)%></th>
-    <th style="color: black"><%=rs.getString(3)%></th>
-    <th style="color: black"><%=rs.getString(9)%></th>
+    <th style="color: black"><%=rs.getString(8)%></th>
+    <th style="color: black"><%=rs.getString(10)%></th>
    
  </tr> 
        <%}%>                 
             
              </table>
                     </center>
-     <%
-
-double Apercentage =0;
-
-double j=count[0];
-double k=count[1];
-double l=count[2];
-double m=count[3];
-Apercentage = j/totalrecords*100;
-
-
-double Bpercentage =0; 
-Bpercentage = k/totalrecords*100;
-double Cpercentage =0; 
-Cpercentage = l/totalrecords*100;
-double Dpercentage =0;
-Dpercentage = m/totalrecords*100;
-
- System.out.println("percentagesA -----------"+Apercentage);
- System.out.println("percentagesB -----------"+Bpercentage);
- System.out.println("percentagesC-----------"+Cpercentage);
- System.out.println("percentagesD -----------"+Dpercentage);
-       %>      
-    
+ 
      
           
           

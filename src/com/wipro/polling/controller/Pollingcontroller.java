@@ -94,7 +94,7 @@ public String doviewpoll2(Model model,@ModelAttribute("answerbean") userpoll ans
 	int count=0;
 	try {
 		Statement st = con.createStatement();
-		String sql="select count(*) from user1234 where qid="+answerbean.getId()+" and rollno='"+answerbean.getRollno()+"'";
+		String sql="select count(*) from answer where qid="+answerbean.getId()+" and rollno='"+answerbean.getRollno()+"'";
 		ResultSet rs=st.executeQuery(sql);
 		rs.next();
 		count=rs.getInt(1);
