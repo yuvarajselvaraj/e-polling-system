@@ -29,7 +29,7 @@
           <li><a href="addpoll"><span>Add Poll</span></a></li>
          
            <li class="active"><a href="viewresults2"><span>View Results</span></a></li>
-         <li><a href="admin"><span>Logout</span></a></li>
+         <li><a href="index"><span>Logout</span></a></li>
         </ul>
       </div>
       <div class="clr"></div>
@@ -59,7 +59,7 @@
            
             con = Dbconnection.getConnection();
             st = con.createStatement();
-            rs = st.executeQuery("select * from questions");
+            rs = st.executeQuery("select distinct qid from answer;");
           
           
             
@@ -77,7 +77,7 @@
                        {
                            
                           
-                       int qid = rs.getInt("id");
+                       int qid = rs.getInt("qid");
                        
                              %>
                

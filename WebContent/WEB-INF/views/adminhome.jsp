@@ -10,9 +10,44 @@
 <script type="text/javascript" src="/polling/resources/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/polling/resources/js/script.js"></script>
 <script type="text/javascript" src="/polling/resources/js/coin-slider.min.js"></script>
-</head>
+
+<script type="text/javascript" language="javascript">
+
+   $(document).ready(function() {
+      var title = '${msg}';
+      var title1='${error}';
+      if(title!=null && title !="")
+    	  {
+    	  document.getElementById("warning-alert").style.display='none';
+    	  document.getElementById("success-alert").style.display='block';
+    		    $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+    		      $("#success-alert").slideUp(500);
+    		    });
+    	  }
+      else if(title1!=null && title1 !="")
+    	  {
+    	  document.getElementById("success-alert").style.display='none';
+    	  document.getElementById("warning-alert").style.display='block';
+		    $("#warning-alert").fadeTo(2000, 500).slideUp(500, function() {
+		      $("#warning-alert").slideUp(500);
+		    });
+    	  }
+      else 
+    	  {
+    	  document.getElementById("warning-alert").style.display='none';
+    	  document.getElementById("success-alert").style.display='none';
+    	  }
+     
+   });
+   </script>
+   </head>
 <body>
-    
+    <div class="alert alert-success" id="success-alert" >
+  <strong>${msg}</strong>
+</div>
+<div class="alert alert-warning" role="alert" id="warning-alert">
+  <strong>${error } </strong> 
+</div>
 <div class="main">
   <div class="header">
     <div class="header_resize">
@@ -26,7 +61,7 @@
           <li><a href="addpoll"><span>Add Poll</span></a></li>
           <li><a href="viewresults"><span>View Polls</span></a></li>
            <li><a href="viewresults2"><span>View Results</span></a></li>
-         <li><a href="admin"><span>Logout</span></a></li>
+         <li><a href="index"><span>Logout</span></a></li>
         </ul>
       </div>
       <div class="clr"></div>
@@ -61,6 +96,7 @@
       <div style="clear:both;"></div>
     </div>
   </div>
+</div>
 </div>
 </body>
 </html>

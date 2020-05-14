@@ -29,7 +29,7 @@
           <li><a href="addpoll"><span>Add Poll</span></a></li>
           <li class="active"><a href="viewresults"><span>View Polls</span></a></li>
            <li><a href="viewresults2"><span>View Results</span></a></li>
-         <li><a href="admin"><span>Logout</span></a></li>
+         <li><a href="index"><span>Logout</span></a></li>
         </ul>
       </div>
       <div class="clr"></div>

@@ -2,8 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Validate Login & Register Forms Flat Responsive Widget Template :: w3layouts</title>
-	<!-- Meta tag Keywords -->
+	<title>E-polling</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
 	<meta name="keywords" content="Validate Login & Register Forms Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
@@ -15,6 +14,36 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<script type="text/javascript" language="javascript">
+
+   $(document).ready(function() {
+      var title = '${msg}';
+      var title1='${error}';
+      if(title!=null && title !="")
+    	  {
+    	  document.getElementById("warning-alert").style.display='none';
+    	  document.getElementById("success-alert").style.display='block';
+    		    $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+    		      $("#success-alert").slideUp(500);
+    		    });
+    	  }
+      else if(title1!=null && title1 !="")
+    	  {
+    	  document.getElementById("success-alert").style.display='none';
+    	  document.getElementById("warning-alert").style.display='block';
+		    $("#warning-alert").fadeTo(2000, 500).slideUp(500, function() {
+		      $("#warning-alert").slideUp(500);
+		    });
+    	  }
+      else 
+    	  {
+    	  document.getElementById("warning-alert").style.display='none';
+    	  document.getElementById("success-alert").style.display='none';
+    	  }
+     
+   });
+   </script>
+   
 	<!-- Meta tag Keywords -->
 
 	<!-- css files -->
@@ -29,9 +58,15 @@
 </head>
 
 <body>
+<div class="alert alert-success" id="success-alert" >
+  <strong>${msg}</strong>
+</div>
+<div class="alert alert-warning" role="alert" id="warning-alert">
+  <strong>${error } </strong> 
+</div>
 	<!-- title -->
 	<h1>
-		welcome to E-polling system<br>students login
+		welcome to E-polling system<br>Login
 	</h1>
 	<!-- //title -->
 
@@ -41,7 +76,7 @@
 			<div class="box boxShaddow"></div>
 			<div class="box loginBox">
 				<h3>Login Here</h3>
-				<form class="form" action="slogin" method="post">
+				<form class="form" action="login" method="post">
 					<div class="f_row-2">
 						<input type="text" class="input-field" placeholder="rollno" name="rollno" required>
 					</div>
@@ -52,45 +87,55 @@
 					<div class="f_link">
 						<a href="forgetmail" >Forgot your password?</a>
 					</div>
-					<div class="submit-w3">
-					<a href="admin">If admin click here</a>
-			</div>
 				</form>
-				<div style="color: red" >${error} 
-			<div style="color:green">${msg}
+				
 		</div>
-			</div>
-				</div>
 			
+				
 			<div class="box registerBox wthree">
 				<span class="reg_bg"></span>
 				<h3>Register</h3>
-				<form class="form" action="sregister" method="post">
+				<form class="form" action="register" method="post">
 					<div class="f_row-2">
 						<input type="text" class="input-field" placeholder="rollno" name="rollno" required>
 					</div>	
 					<div class="f_row-2">
 						<input type="email" class="input-field" placeholder="email" name="email" required>
 					</div>
+					<div class="f_row-3">
+						<input type="text" class="input-field" placeholder="firstname" name="firstname" required>
+					</div>
+					<div class="f_row-4">
+						<input type="text" class="input-field" placeholder="lastname" name="lastname" required>
+					</div>
+					<div class="f_row-5">
+					<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="designation" id="inlineRadio1" value="staff">
+						  <label class="form-check-label" for="designation">STAFF</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="designation" id="inlineRadio2" value="student">
+						  <label class="form-check-label" for="designation">STUDENT</label>
+						</div>
+						</div>
 					<div class="f_row-2 last">
 						<input type="password" name="password" placeholder="Password" id="password1" class="input-field" required>
 					</div>
 					<div class="f_row-2 last">
 						<input type="password" name="spassword1" placeholder="Confirm Password" id="password2" class="input-field" required>
 					</div>
+					
 					<input class="submit-w3" type="submit" value="Register">
-					<div class="submit-w3">	
-			<a href="admin" >If admin click here</a></div>
 				</form>
-			
 			</div>
-			<a href="#" class="regTag icon-add">
+						<a href="#" class="regTag icon-add">
 				<i class="fa fa-repeat" aria-hidden="true"></i>
 
 			</a>
-		</div>
-		
-	</div>
+			</div>
+
+			</div>
+			
 	
 	<div>
 	
@@ -99,7 +144,7 @@
 
 	<!-- copyright -->
 	<div class="footer-w3ls">
-		<h2>&copy; 2018 E-Polling system. All rights reserved 
+		<h2>&copy; 2020 E-Polling system. All rights reserved 
 		</h2>
 	</div>
 	<!-- //copyright -->

@@ -25,8 +25,7 @@ public class Questiondaoimpl implements Questiondao {
 		
 		System.out.println("-----"+question.getOption1());
 		sessionFactory.getCurrentSession().save(question);
-		
-		return "addpoll";
+		return "adminhome";
 	}
 	@Transactional
 	@Override

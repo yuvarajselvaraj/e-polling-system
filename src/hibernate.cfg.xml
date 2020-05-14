@@ -6,7 +6,7 @@
     <session-factory>
            
            <mapping class="com.wipro.polling.model.Login"/>
-           <mapping class="com.wipro.polling.model.Adminlogin"/>
+          
            <mapping class="com.wipro.polling.model.Question"/>
            <mapping class="com.wipro.polling.model.userpoll"/>
            

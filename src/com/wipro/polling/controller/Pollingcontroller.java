@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.servlet.http.HttpSession;
-
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.wipro.polling.Dbconnection.Dbconnection;
-import com.wipro.polling.dao.Logindaoimpl;
-import com.wipro.polling.model.Adminlogin;
 import com.wipro.polling.model.Login;
 import com.wipro.polling.model.Question;
 import com.wipro.polling.model.userpoll;
@@ -30,8 +24,13 @@ public class Pollingcontroller {
 	
 	@Autowired
     private Questionservice questionservice;  
-@RequestMapping(value="student")
+@RequestMapping(value="/")
 public String dostart()
+{
+	return "index";
+}
+@RequestMapping(value="index")
+public String dologout()
 {
 	return "index";
 }
@@ -40,11 +39,6 @@ public String doviewresults()
 {
 	return "viewresults2";
 }	
-@RequestMapping(value="PrintFormParams")
-public String doPrintForm()
-{
-	return "survey";
-}
 @RequestMapping(value="viewresults3")
 public String doviewresults3()
 {
@@ -55,23 +49,18 @@ public String doviewpolls()
 {
 	return "viewresults";
 }
-@RequestMapping(value="/")
-public String dostart0(){
-	return "adminindex";
-	
-}
 @RequestMapping(value="viewpoll")
 public String doviewpoll()
 {
 	return "viewpoll";
 }
 @RequestMapping(value="mail",method=RequestMethod.POST)
-public String domail(Model model,@ModelAttribute("loginbean") Adminlogin loginbean)
+public String domail(Model model,@ModelAttribute("loginbean") Login loginbean)
 {  if(loginbean.getEmail()!=null)
 {
 	if (loginService.domail(loginbean.getEmail()) != null)
 	{
-		return "adminindex";
+		return "index";
 	}
 	else {
 		return "error";
@@ -131,11 +120,6 @@ public String doadminhome()
 {
 	return "adminhome";
 }
-@RequestMapping(value="admin")
-public String doadminstart()
-{
-	return "adminindex";
-}
 @RequestMapping(value="userhome")
 public String douserhome()
 {
@@ -157,11 +141,11 @@ public String doaddpoll1(Model model,@ModelAttribute("questionbean") Question qu
 	}
 	else
 	{
-		model.addAttribute("msg1","failure");
-		return "addpoll";
+		model.addAttribute("error","failure");
+		return "adminhome";
 	}
 }
-@RequestMapping(value="/sregister",method=RequestMethod.POST)
+@RequestMapping(value="/register",method=RequestMethod.POST)
 public String doRegister(Model model,@ModelAttribute("loginbean") Login loginbean)
 {
 	if (loginbean != null && loginbean.getRollno() != null && loginbean.getPassword() != null && loginbean.getEmail()!=null)
@@ -175,13 +159,18 @@ public String doRegister(Model model,@ModelAttribute("loginbean") Login loginbea
 	
 }
 }
-@RequestMapping(value="/slogin",method=RequestMethod.POST)
+@RequestMapping(value="/login",method=RequestMethod.POST)
 public String dologin(Model model,@ModelAttribute("loginbean") Login loginBean)
 {
 	if (loginBean.getRollno() !=null && loginBean.getPassword() != null) {
 		
 		if (loginService.dologin(loginBean.getRollno(), loginBean.getPassword()) != null) {
+			Login parameters=loginService.dologin(loginBean.getRollno(), loginBean.getPassword());
 			model.addAttribute("uid", loginBean.getRollno());
+			System.out.println(parameters.getDesignation());
+			if(parameters.getDesignation().equalsIgnoreCase("staff")) {
+				return "adminhome";
+			}
 			return "userhome";
 		} else {
 			model.addAttribute("error", "Invalid Details");
@@ -194,37 +183,6 @@ public String dologin(Model model,@ModelAttribute("loginbean") Login loginBean)
 		return "index";
 	}
 }
-@RequestMapping(value="/adminsignup",method=RequestMethod.POST)
-public String doadminsignup(Model model,@ModelAttribute("loginbean") Adminlogin loginbean)
-{
-	if (loginbean != null && loginbean.getFirstname() != null && loginbean.getPassword() != null && loginbean.getLastname()!=null && loginbean.getEmail()!=null)
-	 {
-model.addAttribute("msg", "Registered Successfully");
-return loginService.doadminRegister(loginbean);
-} 
-else {
-model.addAttribute("error", "Error Occured");
-return "error";
 
-}
-}
-@RequestMapping(value="/adminhome1",method=RequestMethod.POST)
-public String doadminlogin(Model model,@ModelAttribute("loginbean") Adminlogin loginBean)
-{
-	if (loginBean.getEmail() !=null && loginBean.getPassword() != null) {
-		
-		if (loginService.doAlogin(loginBean.getEmail(), loginBean.getPassword()) != null) {
-			return "adminhome";
-		} else {
-			model.addAttribute("error", "Invalid Details");
-			System.out.println("else");
-			return "adminindex";
-		}
-
-	} else {
-		model.addAttribute("error", "Please enter Details");
-		return "adminindex";
-	}
-}
 
 }

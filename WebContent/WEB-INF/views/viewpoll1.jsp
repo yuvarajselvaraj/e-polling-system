@@ -31,7 +31,7 @@
         <ul>
           <li ><a href="userhome"><span>Home Page</span></a></li>
           <li class="active"><a href="viewpoll"><span>View Poll</span></a></li>
-          <li><a href="student"><span>Logout</span></a></li>
+          <li><a href="index"><span>Logout</span></a></li>
         </ul>
       </div>
       <div class="clr"></div>
