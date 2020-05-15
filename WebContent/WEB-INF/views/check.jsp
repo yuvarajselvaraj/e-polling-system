@@ -69,7 +69,7 @@ else if(request.getParameter("rollno_r")!=null){
 
         rs.close();
         pstmt.close();
-        con.close();//close connection
+        con.close();
     }
     catch(Exception e)
     {
