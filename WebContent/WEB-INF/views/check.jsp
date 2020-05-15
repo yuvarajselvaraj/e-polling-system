@@ -57,13 +57,13 @@ else if(request.getParameter("rollno_r")!=null){
         if(rs.next())               
         {  
             %>
-            <span class="text-success">  Roll no found </span>
+            <span class="text-danger">  Roll no already exist </span>
             <%
         }
         else
         {
             %>
-            <span class="text-danger">Roll no not found</span>
+            <span class="text-sucess">Roll no not found</span>
             <%
         }
 
