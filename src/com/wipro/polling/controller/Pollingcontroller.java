@@ -29,6 +29,11 @@ public String dostart()
 {
 	return "index";
 }
+@RequestMapping(value="check")
+public String doajax()
+{
+	return "check";
+}
 @RequestMapping(value="index")
 public String dologout()
 {

@@ -14,7 +14,9 @@
 <script type="text/javascript" src="/polling/resources/js/coin-slider.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
  <script type="text/javascript" language="javascript">
-
+ function preventBack(){window.history.forward();}
+ setTimeout("preventBack()", 0);
+ window.onunload=function(){null};
    $(document).ready(function() {
       var title = '${msg}';
       var title1='${error}';

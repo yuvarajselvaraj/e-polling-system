@@ -6,6 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
 	<meta name="keywords" content="Validate Login & Register Forms Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<link rel="stylesheet" href="/polling/resources/css/style.css" type="text/css" media="all" />
+	<link href="/polling/resources/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="/polling/resources/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/polling/resources/js/script.js"></script>
+	<link href="//fonts.googleapis.com/css?family=Magra:400,700&amp;subset=latin-ext" rel="stylesheet">
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -13,48 +19,9 @@
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
-	</script>
-	<script type="text/javascript" language="javascript">
-
-   $(document).ready(function() {
-      var title = '${msg}';
-      var title1='${error}';
-      if(title!=null && title !="")
-    	  {
-    	  document.getElementById("warning-alert").style.display='none';
-    	  document.getElementById("success-alert").style.display='block';
-    		    $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
-    		      $("#success-alert").slideUp(500);
-    		    });
-    	  }
-      else if(title1!=null && title1 !="")
-    	  {
-    	  document.getElementById("success-alert").style.display='none';
-    	  document.getElementById("warning-alert").style.display='block';
-		    $("#warning-alert").fadeTo(2000, 500).slideUp(500, function() {
-		      $("#warning-alert").slideUp(500);
-		    });
-    	  }
-      else 
-    	  {
-    	  document.getElementById("warning-alert").style.display='none';
-    	  document.getElementById("success-alert").style.display='none';
-    	  }
-     
-   });
-   </script>
-   
-	<!-- Meta tag Keywords -->
-
-	<!-- css files -->
-	<link rel="stylesheet" href="/polling/resources/css/style.css" type="text/css" media="all" />
-	<!-- Style-CSS -->
-	<link href="/polling/resources/css/font-awesome.min.css" rel="stylesheet">
-	<!-- Font-Awesome-Icons-CSS -->
-	<!-- //css files -->
-	<!-- web-fonts -->
-	<link href="//fonts.googleapis.com/css?family=Magra:400,700&amp;subset=latin-ext" rel="stylesheet">
-	<!-- //web-fonts -->
+		
+		
+	</script>	
 </head>
 
 <body>
@@ -78,8 +45,9 @@
 				<h3>Login Here</h3>
 				<form class="form" action="login" method="post">
 					<div class="f_row-2">
-						<input type="text" class="input-field" placeholder="rollno" name="rollno" required>
+						<input type="text" class="input-field" placeholder="rollno" name="rollno" id="rollno" onkeyup="loadxml()" required>
 					</div>
+					<span id="available"></span>
 					<div class="f_row-2 last">
 						<input type="password" name="password" placeholder="Password" class="input-field" required>
 					</div>
@@ -97,8 +65,9 @@
 				<h3>Register</h3>
 				<form class="form" action="register" method="post">
 					<div class="f_row-2">
-						<input type="text" class="input-field" placeholder="rollno" name="rollno" required>
+						<input type="text" class="input-field" placeholder="rollno" name="rollno" id="rollno_r" required>
 					</div>	
+					<span id="available_r"></span>
 					<div class="f_row-2">
 						<input type="email" class="input-field" placeholder="email" name="email" required>
 					</div>
@@ -161,6 +130,7 @@
 	<!-- password-script -->
 	<script>
 		window.onload = function () {
+			
 			document.getElementById("password1").onchange = validatePassword;
 			document.getElementById("password2").onchange = validatePassword;
 		}
@@ -171,8 +141,66 @@
 				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
 			else
 				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
+		
 		}
+		   
+		    $(document).ready(function() {
+		        var title = '${msg}';
+		        var title1='${error}';
+		        if(title!=null && title !="")
+		      	  {
+		      	  document.getElementById("warning-alert").style.display='none';
+		      	  document.getElementById("success-alert").style.display='block';
+		      		    $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+		      		      $("#success-alert").slideUp(500);
+		      		    });
+		      	  }
+		        else if(title1!=null && title1 !="")
+		      	  {
+		      	  document.getElementById("success-alert").style.display='none';
+		      	  document.getElementById("warning-alert").style.display='block';
+		  		    $("#warning-alert").fadeTo(2000, 500).slideUp(500, function() {
+		  		      $("#warning-alert").slideUp(500);
+		  		    });
+		      	  }
+		        else 
+		      	  {
+		      	  document.getElementById("warning-alert").style.display='none';
+		      	  document.getElementById("success-alert").style.display='none';
+		      	  }
+		        $('#rollno').on('input', function() {
+					var rollno=$("#rollno").val();
+				
+					$.ajax({
+						url:"check",
+						method: "POST",
+					data:"rollno="+rollno,
+					type:"text",
+					success:function(data)
+					{
+						$("#available").html(data);
+					}
+					});
+					
+				});
+		        $('#rollno_r').on('input', function() {
+					var rollno=$("#rollno_r").val();
+				
+					$.ajax({
+						url:"check",
+						method: "POST",
+					data:"rollno_r="+rollno,
+					type:"text",
+					success:function(data)
+					{
+						$("#available_r").html(data);
+					}
+					});
+					
+				});
+		       
+		     });
+		    
 	</script>
 	<!-- //password-script -->
 	<!-- //js files -->
