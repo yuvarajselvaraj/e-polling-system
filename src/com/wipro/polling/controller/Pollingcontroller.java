@@ -1,9 +1,15 @@
 package com.wipro.polling.controller;
 
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import static java.lang.System.out;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,15 +35,43 @@ public String dostart()
 {
 	return "index";
 }
-@RequestMapping(value="check")
-public String doajax()
+@RequestMapping(value="check",method=RequestMethod.POST)
+public String doajax() 
 {
 	return "check";
+}
+@RequestMapping(value="process",method=RequestMethod.POST)
+public String doprocess() 
+{
+	return "process";
+}
+@RequestMapping(value="editdata",method=RequestMethod.GET)
+public String doeditdata() 
+{
+	return "editdata";
+}
+@RequestMapping(value="editdata1",method=RequestMethod.POST)
+public String doupdatedata(Model model,@ModelAttribute("questionbean") Question questionbean) 
+{
+	if(questionbean.getQuestion().length()>0&&(questionbean.getOption1().length()>0&&questionbean.getOption2().length()>0))
+	{  
+		model.addAttribute("msg","sucess");
+		return questionservice.doupdate(questionbean);
+	}
+	else
+	{
+		model.addAttribute("error","failure");
+		return "adminhome";
+	}
 }
 @RequestMapping(value="index")
 public String dologout()
 {
 	return "index";
+}@RequestMapping(value="edit")
+public String doedit()
+{
+	return "edit";
 }
 @RequestMapping(value="viewresults2")
 public String doviewresults()

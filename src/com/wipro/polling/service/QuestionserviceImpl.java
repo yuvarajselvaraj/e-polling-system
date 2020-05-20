@@ -22,5 +22,10 @@ public class QuestionserviceImpl implements Questionservice {
 	{
 		return questiondao.doans(ans);
 	}
+	@Override
+	public String doupdate(Question question) {
+		// TODO Auto-generated method stub
+		return questiondao.doupdate(question);
+	}
 	
 }

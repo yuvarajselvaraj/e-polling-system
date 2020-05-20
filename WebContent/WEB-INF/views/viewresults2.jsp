@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/polling/resources/css/style2.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/polling/resources/css/coin-slider.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <script type="text/javascript" src="/polling/resources/js/cufon-yui.js"></script>
 <script type="text/javascript" src="/polling/resources/js/cufon-times.js"></script>
 <script type="text/javascript" src="/polling/resources/js/jquery-1.4.2.min.js"></script>
@@ -20,14 +21,24 @@
   <div class="header">
     <div class="header_resize">
       <div class="logo">
-        <h1><a href="adminhome">Online<span> College</span>Voting</a></h1>
+        <h1><a href="adminhome">Online<span> College</span>Voting System</a></h1>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
-         <ul>
+        <ul>
           <li><a href="adminhome"><span>Home Page</span></a></li>
-          <li><a href="addpoll"><span>Add Poll</span></a></li>
-         
+         <div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">operations
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+   <a href="addpoll" >Add poll</a> 
+      <a href="edit">edit/delete poll</a>
+    </div>
+  </div>
+</div> 
+          <li><a href="viewresults"><span>View Polls</span></a></li>
            <li class="active"><a href="viewresults2"><span>View Results</span></a></li>
          <li><a href="index"><span>Logout</span></a></li>
         </ul>

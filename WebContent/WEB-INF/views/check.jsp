@@ -63,7 +63,7 @@ else if(request.getParameter("rollno_r")!=null){
         else
         {
             %>
-            <span class="text-sucess">Roll no not found</span>
+            <span class="text-success">Roll no not found</span>
             <%
         }
 

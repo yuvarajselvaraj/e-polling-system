@@ -1,3 +1,4 @@
+<%@page import="org.json.*" %>
 <!DOCTYPE HTML>
 <html lang="zxx">
 
@@ -33,7 +34,7 @@
 </div>
 	<!-- title -->
 	<h1>
-		welcome to E-polling system<br>Login
+		welcome to Online College Voting System<br>Login
 	</h1>
 	<!-- //title -->
 
@@ -174,8 +175,8 @@
 					$.ajax({
 						url:"check",
 						method: "POST",
-					data:"rollno="+rollno,
-					type:"text",
+					data: "rollno="+rollno,
+					dataType:"text",
 					success:function(data)
 					{
 						$("#available").html(data);

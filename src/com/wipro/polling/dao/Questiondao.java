@@ -6,4 +6,5 @@ import com.wipro.polling.model.userpoll;
 public interface Questiondao {
  public String doadd(Question question);
  public String doans(userpoll ans);
+public String doupdate(Question question);
 }

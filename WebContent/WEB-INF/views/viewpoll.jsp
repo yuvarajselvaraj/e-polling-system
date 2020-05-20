@@ -24,7 +24,7 @@
   <div class="header">
     <div class="header_resize">
       <div class="logo">
-        <h1><a href="userhome">Online<span> College</span>Voting</a></h1>
+        <h1><a href="userhome">Online<span> College</span>Voting System</a></h1>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">

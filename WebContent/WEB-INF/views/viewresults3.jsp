@@ -25,14 +25,24 @@ javafx.scene.chart.*,javafx.scene.Group" %>
   <div class="header">
     <div class="header_resize">
       <div class="logo">
-        <h1><a href="adminhome">Online<span> College</span>Voting</a></h1>
+        <h1><a href="adminhome">Online<span> College</span>Voting System</a></h1>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
-         <ul>
+        <ul>
           <li><a href="adminhome"><span>Home Page</span></a></li>
-          <li><a href="addpoll"><span>Add Poll</span></a></li>
-          
+         <div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">operations
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+   <a href="addpoll" >Add poll</a> 
+      <a href="edit">edit/delete poll</a>
+    </div>
+  </div>
+</div> 
+          <li><a href="viewresults"><span>View Polls</span></a></li>
            <li class="active"><a href="viewresults2"><span>View Results</span></a></li>
          <li><a href="index"><span>Logout</span></a></li>
         </ul>

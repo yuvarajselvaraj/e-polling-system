@@ -36,5 +36,11 @@ public class Questiondaoimpl implements Questiondao {
         return "userhome";
    
 	}
+	@Transactional
+	@Override
+	public String doupdate(Question question) {
+		sessionFactory.getCurrentSession().saveOrUpdate(question);
+		return "edit";
+	}
 
 }
